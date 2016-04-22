@@ -1,0 +1,471 @@
+.lot-bidding{
+	display: inline-block;
+	float: right;
+	width: 49%;
+
+	@include breakpoint(med-large){
+		
+		width: 39%;
+	}
+
+	position: relative;
+	
+	vertical-align: top;
+	margin-top: 13px;
+	height: 450px;
+	
+}
+
+	.bidding--background{
+		background-color: white;
+		box-shadow: $ritchie-shadow;
+		z-index: 2;
+    	position: relative;
+    	overflow: hidden;
+    	height: 100%;
+	}
+
+	.bidding--area{
+		position: relative;
+		height: 100%;
+		width: 100%;
+		float: right;
+		background-color: white;
+
+		transition: $transition;
+
+		&.s-group-active{
+			display: inline-block;
+			width: 50%;
+				
+		}
+	}
+
+	.bidding--header{
+		background-color: $grey-300;
+		padding: 10px $default-margin 5px;
+		@include default-font;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.bidding--content{
+		padding: $default-margin;
+	}
+
+
+		.bid-field{
+			padding: $default-margin 0;
+			border-bottom: $ritchie-border;
+			text-align: right;
+			line-height: 1;
+			overflow: hidden;
+
+			.field--select, .field--w-modifier{
+				width: 50%;
+			}
+
+			.field--toggle{
+				float: right;
+			}
+
+			&:last-of-type{
+				border-bottom: none;
+			}
+
+			&:first-of-type{
+				padding-top: 0;
+			}
+
+			label{
+				float: left;
+			}
+
+			.bid-value:empty:before{
+				content: "waiting...";
+			}
+
+			&.bid-field_left{
+				text-align: left;
+			}
+		}
+
+		.bidding{
+			position: absolute;
+			bottom: $default-margin;
+			left: $default-margin;
+			right: $default-margin;
+		}
+
+		.bid-action{
+			
+			@include default-font;
+			border: none;
+			background-color: transparent;
+			text-decoration: underline;
+			padding: 10px 0;
+			outline: none;
+			cursor: pointer;
+
+			.bid-action--active-text{
+				display: none;
+			}
+
+			&.s-active{
+				.bid-action--default-text{
+					display: none;
+				}
+				.bid-action--active-text{
+					display: block;
+				}
+			}
+
+		}
+
+		.bidding--activate_group{
+			margin-bottom: $default-margin;
+			margin-left: 12px;
+			padding: 4px 0;
+			background-color: $brand-color;
+			color: white;
+			text-align: center;
+			@include default-font;
+			position: relative;
+
+			span{
+				position: relative;
+				z-index: 2;
+			}
+
+			&:before{
+				content: " ";
+				background-color: $brand-color;
+				display: block;
+				position: absolute;
+				left: -12px;
+				top: 4px;
+				width: 22px;
+				height: 22px;
+				transform: rotate(45deg);
+				z-index: 1;
+			}
+		}
+
+		.bidding--activate_unlock label{
+			@extend .button_positive;
+			color: $black;
+			width: 100%;
+			min-height: 100px;
+
+			text-align: center;
+			color: white;
+			font-size: 1.2rem;
+			line-height: 80px;
+
+			input{
+				display: none;
+			}
+
+			&:hover{
+				background-color: lighten($finance-color, 10%);
+			}
+		}
+
+		.bidding--activate{
+			position: relative;
+
+			margin-bottom: $default-margin;
+			background-color: black;
+			padding: 5px;
+			color: darken(white,10%);
+			text-align: center;
+			@include default-font;
+			transition: $transition;
+
+			label{
+				color: darken(white,20%);
+				font-size: 0.9rem;
+			}
+
+			&.s-active{
+				opacity: 0;
+			}
+
+			&:after{
+				display: block;
+				content: " ";
+				width: 15px;
+				height: 15px;
+
+				position: absolute;
+				bottom: -7px;
+				left: 50%;
+				transform: translateX(-50%) rotate(45deg);
+				
+				background-color: black;
+			}
+
+			&.s-bounce{
+				animation-duration: 0.4s;
+			    animation-name: bounce;
+			    animation-iteration-count: 1;
+			    animation-timing-function: ease;
+			}
+		}
+
+			@keyframes bounce{
+			    from{
+			      transform: translateY(0);
+			    }
+			    12%{
+			      transform: translateY(-25%);
+			    }
+			    25%{
+			      transform: translateY(0);
+			    }
+			    37%{
+			      transform: translateY(25%);
+			    }
+			    50%{
+			      transform: translateY(0);
+			    }
+			    62%{
+			      transform: translateY(-25%);
+			    }
+			    75%{
+			      transform: translateY(0);
+			    }
+			    87%{
+			      transform: translateY(25%);
+			    }
+			    to{
+			      transform: translateY(0);
+			    }
+			}
+
+		.bidding--bid-button{
+			@extend .button;
+			color: $black;
+			background-image: none;
+			background-color: white;
+			
+			width: 100%;
+
+			label{
+				color: black; 
+			}
+
+			&:hover{
+				color: black;
+				background-image: none;
+				background-color: white;
+			}
+			
+			.bidder--option{
+				display: none;
+			}
+
+			&.s-disabled{
+				opacity: 0.5;
+				background-image: $button-gradient;
+
+				.bidder--disabled{
+					display: block;
+					font-size: 1.2rem;
+
+					&:before{
+						content: "ASK PRICE: ";
+						font-size: 0.9rem;
+						display: block;
+					}
+				}
+			}
+
+			&.s-active, &.s-open-offer{
+				background-image: $button-gradient;
+
+				&:hover{
+					background-image: $button-gradient_hover;
+					color: black;
+				}
+			}
+			
+			&.s-active .bidder--active{
+				display: block;
+				font-size: 1.2rem;
+
+				&:before{
+					content: "BID ";
+					font-size: 0.9rem;
+					display: block;
+				}
+			}
+			
+			&.s-open-offer .bidder--open-offer{
+				display: block;
+				font-size: 1.2rem;
+			}
+
+			&.s-open-offer_disabled{
+				opacity: 0.5;
+				pointer-events: none;
+				
+				.bidder--open-offer_disabled{
+					display: block;
+					font-size: 1.2rem;
+				}
+			}
+
+			&.s-waiting{
+				border: 2px solid $grey-300;
+
+				.bidder--waiting{
+					display: block;
+				}
+			}
+
+			&.s-accepted{
+				border: 2px solid $finance-color;
+
+				.bidder--accepted{
+					display: block;
+				}	
+			}
+
+			&.s-sold-won{
+				border: 2px solid $finance-color;
+
+				.bidder--won{
+					display: block;
+				}	
+			}
+
+			&.s-sold-lost{
+				border: 2px solid $grey-300;
+
+				.bidder--lost{
+					display: block;
+				}	
+			}
+
+			
+		}
+
+		.bidding--controls_b .bidding--bid-button{
+			min-height: 100px;
+
+			&.s-disabled{
+				display: none;
+			}
+		}
+			
+			.pre-bid{
+				text-align: center;
+				padding: 20px 0;
+			}
+
+		.bidding--messages{
+			position: relative;
+			top: -19px;
+			z-index: 1;
+			padding: 0 $default-margin;
+		}
+
+			.bidding--outbid, .bidding--open-offer{
+				position: absolute;
+				left: $default-margin;
+				right: $default-margin;
+
+				transform: translateY(-150%);
+				transition: $transition;
+
+				&.s-visible{
+					transform: translateY(0);
+				}
+			}
+
+			/************************
+				MESSAGE BOXES
+			************************/
+
+
+			*[class^="message-box"]{
+				border: 1px solid $grey-300;
+				//background-color: $grey-100;
+				padding: 10px $default-margin;
+				padding-left: 32 + (3*$default-margin);
+				margin-top: $default-margin;
+				font-weight: 700;
+
+				position: relative;
+				text-align: left;
+				font-size: 0.8rem;
+				line-height: 1.2rem;
+
+				&:before{
+					display: inline-block;
+					position: absolute;
+					left: $default-margin;
+					top: 50%;
+					transform: translateY(-50%);
+					padding-right: $default-margin;
+
+					border-right: 1px solid $grey-300;
+					@include icon-font;
+					font-size: 24px;
+				}
+			}
+
+			.message-box--error{
+				border-color: $error-colour;
+				@extend .icon-warning;
+
+				&:before{
+					color: $error-colour;
+				}
+			}
+
+			.message-box--warning{
+				border: none;
+				background-color: lighten($warning-colour, 10%);
+				color: $grey-700;
+				@extend .icon-warning;
+
+				&:before{
+					color: darken($warning-colour,25%);
+					border-right-color: darken($warning-colour,25%);
+				}
+			}
+
+			.message-box--open-offer{
+				border: none;
+				background-color: lighten($error-colour, 10%);
+				color: white;
+				@extend .icon-sale;
+
+				&:before{
+					color: darken($error-colour,25%);
+					border-right-color: darken($error-colour,25%);
+				}
+			}
+
+			.message-box--success{
+				border-color: $finance-color;
+				@extend .icon-check;
+
+				&:before{
+					color: $finance-color;
+				}
+			}
+
+
+
+
+		
+
+
+
+
+
+
+

@@ -1,0 +1,391 @@
+$ring-top-spacing: 50px;
+$ring-left-spacing: 50px;
+$ring-right-spacing: 30px;
+
+.client--bottom{
+	background-color: $grey-100;
+	position: relative;
+	overflow: hidden;
+
+	&:before{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $ring-top-spacing;
+		background-color: white;
+	}
+}
+
+.bottom-bg{
+	@include center-content;
+}
+
+.other-rings{
+	float: right;
+	width: 38%;
+	margin-top: $ring-top-spacing + $default-margin;
+	@include default-font;
+
+
+}
+
+	.other-ring{
+		box-shadow: $ritchie-shadow;
+		margin-bottom: $default-margin;
+		padding: 5px $ring-right-spacing 5px $ring-left-spacing+5;
+		position: relative;
+		background-color: white;
+
+		img{
+			width: 100%;
+			max-width: 100%;
+			display: block;
+		}
+
+		.lot--name{
+			margin-bottom: 5px;
+		}
+
+		header{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: $ring-left-spacing;
+			background-color: $grey-100;
+			text-align: center;
+		}
+
+		footer{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0;
+			width: $ring-right-spacing;
+
+			button{
+				font-size: 20px;
+				padding: 10px 2px;
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	.ring--lot{
+		text-align: center;
+		background-color: $brand-color;
+		color: white;
+		padding: 1px;
+	}
+
+	.ring--label{
+		display: block;
+		font-size: 1.6rem;
+	}
+
+	
+
+.lot-tables{
+	width: 60%;
+	float: left;
+	//@include center-content;
+	margin-bottom: 100px;
+	@include default-font;
+
+	box-shadow: $ritchie-shadow;
+
+}
+
+	.lot-tables--header{
+		background-color: $grey-100;
+		padding: 0;
+		overflow: hidden;
+		
+		z-index: auto;
+	}
+
+		.lot-tables--tabs{
+
+			display: inline-block;
+			
+			.tab{
+				cursor: pointer;
+				display: inline-block;
+				margin-right: 10px;
+				padding: 10px $default-margin;
+
+				&.s-active{
+					color: $brand-color;
+				}
+				
+				$counter-radius: 20px;
+
+				.tab--counter{
+					background-color: darken($grey-100,20%);
+					color: white;
+					border-radius: $counter-radius;
+					display: inline-block;
+					width: $counter-radius;
+					height: $counter-radius;
+					text-align: center;
+					line-height: $counter-radius;
+					font-size: 0.7rem;
+				}
+			}
+		}
+
+		.lot-tables--column-headers{
+			@extend %label;
+			width: 100%;
+			padding: 0 $default-margin;
+			display: table;
+   			margin-bottom: 10px;
+
+   			.col-3, .col-4, .col-5{
+				text-align: center;
+				
+			}
+		}
+
+		.lot-tables--search{
+			float: right;
+			margin-right: $default-margin;
+			margin-top: 5px;
+		}
+
+		.lot-tables--follow{
+			float: right;
+			margin-right: $default-margin;
+			margin-top: 5px;
+			
+			button{
+				color: $grey-300;
+				font-size: 20px;
+			}
+		}
+
+		
+		.lot-table{
+			background-color: white;
+			@include tableLayout;
+		}
+
+			[class^="col"]{
+				display: table-cell;
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				height: 100%;
+				
+			}
+
+			.col{
+				&-0{
+					width: 3%;
+				}
+				&-1{
+					width: 7%;
+				}
+				&-1and2{
+					width: 61%;
+					text-align: center;
+				}
+				&-2{
+					width: 53%;
+				}
+				&-3{
+					display: none; //HIDING WARRANTY
+				}
+				&-4{
+					width: 8%;
+				}
+				&-5{
+					width: 8%;
+				}
+			}
+
+			.lot{
+				display: table-row;
+				font-size: 0.85rem;
+				transition: $transition;
+				
+				[class^="col"]{
+					border-bottom: $ritchie-border;
+					position: relative;
+				}
+
+				.col-0, .col-3, .col-4, .col-5{
+					text-align: center;
+					vertical-align: middle;
+				}
+
+				.col-0, .col-3{
+					color: $brand-color;
+				}
+
+				.col-2{
+					padding: 5px 10px;
+					vertical-align: top;
+				}
+
+				.col-3{
+					font-size: 1.2rem;
+				}
+
+				
+				.col-4{
+					cursor: pointer;
+					.bid{ text-decoration: underline; }
+
+					&:hover{
+						color: $money-color;
+					}
+				}
+
+
+				/**************
+				STATES FOR LOTS
+				***************/
+
+				&.s-sold{
+					opacity: 0.7;
+
+					.col-0{
+						color: $grey-300;
+					}
+					
+					.col-4{
+						pointer-events: none;
+						
+						&:before{
+							content: "Sold:";
+							font-size: 0.7rem;
+							text-transform: uppercase;
+							color: $money-color;
+						}
+					}
+
+					.icon-plus, button{
+						display: none;
+					}
+
+					&.s-youwon{
+						background-color: rgba($finance-color,0.2);
+
+						.col-4:before{
+							color: $finance-color;
+							content: 'You Won!';
+						}
+					}
+
+				}
+
+				&.s-active-prebid{
+					background-color: rgba($brand-color, 0.2);
+				}
+
+				&.s-currentLot{
+					background-color: rgba($money-color,0.1);
+	
+					.col-0{
+						color: white;
+						font-weight: 700;
+						position: relative;
+
+						&:before{
+							@include icon-font;
+							content: "\e902";
+							color: $money-color;
+							position: absolute;
+							left: 51%;
+							top: 51%;
+							transform: translate(-50%,-50%);
+							z-index: -1;
+							font-size: 35px;
+						}
+					}
+
+					.col-4{
+						pointer-events: none;
+						.bid{ text-decoration: none; }
+						&:before{
+							content: "Selling Now";
+							font-size: 0.7rem;
+							text-transform: uppercase;
+							color: $money-color;
+						}
+					}
+
+					.icon-plus, button{
+						display: none;
+					}
+
+				}
+
+				&[data-group="1"] .col-0:before{
+					content: " ";
+					position: absolute;
+					top: 5px;
+					left: 15%;
+					right: 15%;
+					bottom: 0;
+					border-radius: 15px 15px 0 0;
+					background-color: $grey-100;
+					z-index: -1;
+				}
+
+				&[data-group="1"] ~ &[data-group="1"]{
+					.col-0:before{
+						border-radius: 0;
+						top: 0;
+					}
+				}
+
+			}
+
+ 
+				.lot--photo{
+					width: 100%;
+					max-width: 100%;
+					display: block;
+					margin: 2px 0;
+				}
+
+				.lot--name{
+					font-weight: 700;					
+				}
+
+				.lot--details{
+					margin-top: 3px;
+
+					.lot--value{
+						margin-right: 10px;
+					}
+				}
+
+				.lot--watching{
+					opacity: 0.25;
+					cursor: pointer;
+
+					&:hover{
+						color: $money-color;
+						opacity: 0.8;
+					}
+
+					&.s-active{
+						color: $money-color;
+						opacity: 1;
+					}
+				}
+
+
+
+	.prebid--conversion{
+		color: $grey-500;
+		line-height: 1;
+	}
+
+
+

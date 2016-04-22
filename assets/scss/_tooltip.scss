@@ -1,0 +1,218 @@
+
+//THIS HOLDS THE CONTENT IN THE HTML MARKUP SO IT CAN BE LOADED BY THE JAVASCRIPT
+.tooltips--content-placeholder{
+	display: none;
+}
+
+[class*='tooltip_']{
+	position: absolute;
+	width: $tooltip-icon-size;
+	height: $tooltip-icon-size;
+
+	img{
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.tooltip{
+	&_ne{
+		top: -$tooltip-icon-size/2;
+		right: -$tooltip-icon-size/2;
+	}
+
+	&_se{
+		bottom: 15px;
+		right: 5px;
+	}
+
+	&_e{
+		right: -$tooltip-icon-size - 3;
+	    top: 50%;
+	    transform: translateY(-50%);
+	}
+}
+
+.ritchie-tooltips, .ritchie-tooltips-footed, .ritchie-tooltips_full, .ritchie-tooltips_small{
+	border-radius: 0; 
+	border: 1px solid $black;
+	box-shadow: $ritchie-shadow;
+	background: $white;
+	color: $black;
+	max-width: 400px;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.ritchie-tooltips, .ritchie-tooltips_full, .ritchie-tooltips_small{
+	.tooltipster-content{
+	 	font-size: 1rem;
+		padding: $default-margin/2 $default-margin;
+		overflow: visible;
+		min-width: 350px;
+
+		p{
+			margin: 0;
+		}
+
+		p + p{
+			margin-top: $default-margin;
+		}
+
+		ul{
+			
+		}
+
+		li{
+			
+		}
+
+		a{
+			color: $link-colour;
+		}
+	}
+}
+
+	.tooltip--close{
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		font-size: 15px;
+		cursor: pointer;
+		padding: 10px;
+	}
+
+	.tooltip--header{
+		border-bottom: $ritchie-border;
+		padding-bottom: 5px;
+		margin-bottom: 10px;
+
+		.lot--name{
+			font-size: 1rem;
+		}
+	}
+
+.ritchie-tooltips_small .tooltipster-content{
+	min-width: auto;
+	text-align: center;
+}
+
+.ritchie-tooltips_full{
+	border: none;
+	max-width: 350px;
+	
+	.tooltip--close{
+		top: 0;
+		right: 0;
+	}
+
+	.tooltipster-content{
+		padding: 0;
+	} 
+
+	.tooltip--body{
+		@include default-font;
+		padding: 5px;
+	}
+
+	.tooltip--footer{
+		padding: 5px;
+	}
+
+	.tooltip--photo{
+		max-width: 100%;
+		display: block;
+	}
+
+	.tooltip--lot-details{
+		display: flex;
+		flex-wrap: wrap;
+		flex: 4;
+		padding: 0 10px
+	}
+
+	.tooltip--error, .tooltip--warning{
+		background-color: $error-colour;
+		color: white;
+		padding: 15px;
+		line-height: 1;
+
+		h3, h4, h5, label{
+			color: white;
+		}
+
+		.error--values{
+			background-color: white;
+			color: $error-colour;
+			padding: 5px 0;
+	
+			h3, h4, h5, label{
+				color: $error-colour;
+			}
+
+			&>*{
+				vertical-align: middle;
+			}
+		}
+
+		.error--greater-than{
+			font-size: 40px;
+			padding: 0 10px;
+		}
+	}
+
+	.tooltip--warning{
+		background-color: #FFE101;
+		color: black;
+		text-align: center;
+
+		h3, h4, h5, label{
+			color: black;
+		}
+	}
+}
+
+
+.ritchie-tooltips-footed{ 
+
+	max-width: 800px;
+
+	.tooltipster-content{
+		padding: 0;
+		
+		.tooltip-content{
+			padding: $default-margin $default-margin;
+			font-size: 0.9rem;
+		    line-height: 1.4rem;
+		    overflow: hidden;
+		}
+	}
+
+	.bordered-area{
+		padding: $default-margin $default-margin 0;
+		overflow: hidden;
+		background: $grey-100;
+		border-radius: 10px;
+	}
+}
+
+	.tooltip--left{
+		width: 40%;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.tooltip--right{
+		width: 58%;
+		display: inline-block;
+		float: right;
+		vertical-align: top;
+	}
+
+	.tooltip--footer{
+		padding: $default-margin $default-margin 0;
+		overflow: hidden;
+		background: $grey-100;
+		width: 100%;
+	    font-size: 0.9rem;
+	    line-height: 1.4rem;
+	}
