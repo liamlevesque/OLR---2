@@ -52,12 +52,18 @@
                     </div>
                 </div>
                 <div class="h-d-inline-block">
+                    <div class="header--credit-bar">
+                        <div class="credit-bar--fill" rv-setWidth="user.spent | percentage user.limit"></div>
+                    </div>
                     <div class="header--price">
-                        <label>Spent:</label><span class="header--price-readout dollars" rv-html="user.spent | price"></span></div>
+                        <label>Spent:</label><span class="header--price-readout dollars" rv-html="user.spent | price"></span>
+                    </div>
                     <div class="header--price">
-                        <label>Bid:</label><span class="header--price-readout dollars" rv-html="user.bid | price"></span></div>
+                        <label>Bid:</label><span class="header--price-readout dollars" rv-html="user.bid | price"></span>
+                    </div>
                     <div class="header--price">
-                        <label>Remaining:</label><span class="header--price-readout dollars c-active" rv-html="user.limit | limitprice user.spent user.bid"></span></div>
+                        <label>Remaining:</label><span class="header--price-readout dollars c-active" rv-html="user.limit | limitprice user.spent user.bid"></span>
+                    </div>
                 </div>
             </div>
             <div class="header--section">
@@ -124,7 +130,7 @@
      <div class="middle-section js--middle-section">
         <section class="client--upper js--upper-area">
             <div class="lot-info js--lot-info" rv-currentlot="lotInfo.currentLot">
-                <!-- THIS IS THE AREA THAT THE MAIN LOT PREVIEW GOES -->
+                <!-- THIS IS THE AREA THAT THE MAIN LOT PREVIEW GOES - LOADS FROM TEMPLATE -->
             </div>
             <div class="lot-bidding">
                 <div class="bidding--background">
@@ -474,6 +480,12 @@
             </section>
         </div>
     </div>
+    
+    <footer class="footer--upcoming">
+        <div class="js--next-lot" rv-nextlot="nextLot.currentLot">
+            
+        </div>
+    </footer>
 </div>
 
     <div class="counter-bidder js--counter-bidder">
@@ -720,6 +732,26 @@
 
     <script type="text/javascript" src="assets/js/main-min.js"></script>
     
+    <script id="nextlot" type="x-tmpl-mustache">
+        <div class="other-ring">
+            <div class="g-quarter">
+                <img src="assets/js/data/{{ photo }}" />
+            </div>
+            <div class="g-three-quarters">
+                <div class="lot--name">{{ lot }}</div>
+                <div class="lot--name">{{ name }}</div>
+                <div class="g-half">
+                    <label>Serial Number / VIN</label>
+                    <span class="">{{ serial }}</span>
+                </div>
+                <div class="g-half">
+                    <label>Meter Reads</label>
+                    <span class="">{{ meter }}</span>
+                </div>
+            </div>
+        </div>
+    </script>
+
     <script id="currentlot" type="x-tmpl-mustache">
         <h5 class="lot--number">Lot {{ lot }}</h5>
         <h2 class="lot--title">{{ name }}</h2>

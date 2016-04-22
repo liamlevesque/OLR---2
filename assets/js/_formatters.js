@@ -116,6 +116,10 @@ rivets.formatters.bidderoryou = function(value){
 }
 
 
+rivets.formatters.percentage = function(value,comparison){
+	return value/comparison;
+}
+
 
 
 

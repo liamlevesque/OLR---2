@@ -64,6 +64,7 @@ var saleItem = {
 			lotTable.currentLot = index + 1;
     
 		    lotInfo.currentLot = index; 
+		    nextLot.currentLot = index; 
 
 		    saleItem.currentLot = index;
 

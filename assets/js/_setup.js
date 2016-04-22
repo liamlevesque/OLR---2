@@ -2,7 +2,7 @@ $(function(){
 
 	//ON LOAD ASSIGN A RANDOM BIDDER NUMBER
 	user.bidder = "v" + getRandomInt(7000, 8000);
-	user.spent = 0;
+	user.spent = 5000;
 
 	dataController.submitLotChange({lot: 0,source: user.bidder});
 
@@ -27,7 +27,7 @@ $(function(){
 
 var user = {
 		bidder : "v7005",
-		limit: 10000, 
+		limit: 100000, 
 		spent: 0,
 		bid: 0,
 		bidcount: 0,
@@ -78,14 +78,11 @@ var user = {
 
 	};
 
-
+	rivets.binders.setwidth = function(el, value) {
+	  el.style.width = (100 - value*100) + "%";
+	}
 
 rivets.bind($('.js--header'),{
-	user: user,
-	headerController: headerController
-});
-
-rivets.bind($('.js--main-body'),{
 	user: user,
 	headerController: headerController
 });

@@ -1723,6 +1723,25 @@ header {
     color: white;
     font-size: 0.8rem; }
 
+.header--credit-bar {
+  height: 10px;
+  background-color: #e8e6e2;
+  border-radius: 10px;
+  position: relative; }
+
+.credit-bar--fill {
+  background-color: #24532B;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  -webkit-transition: 0.2s cubic-bezier(0.63, 0.005, 0.365, 1);
+  transition: 0.2s cubic-bezier(0.63, 0.005, 0.365, 1); }
+  .credit-bar--fill.s-low {
+    background-color: #c4483a; }
+
 .header--price label {
   display: inline-block;
   width: 65px;
@@ -3073,6 +3092,12 @@ header {
 .prebid--conversion {
   color: #959595;
   line-height: 1; }
+
+.footer--upcoming {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 /**
  * Swiper 3.3.0
